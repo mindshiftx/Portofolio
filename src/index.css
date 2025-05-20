@@ -1,0 +1,109 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 7%;
+    --foreground: 45 54% 88%;
+
+    --card: 0 0% 10%;
+    --card-foreground: 45 54% 88%;
+
+    --popover: 0 0% 7%;
+    --popover-foreground: 45 54% 88%;
+
+    --primary: 45 54% 58%;
+    --primary-foreground: 0 0% 10%;
+
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 45 54% 88%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 45 30% 70%;
+
+    --accent: 45 54% 58%;
+    --accent-foreground: 0 0% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 45 54% 88%;
+
+    --border: 45 30% 40%;
+    --input: 0 0% 15%;
+    --ring: 45 54% 58%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 10%;
+    --sidebar-foreground: 45 54% 88%;
+    --sidebar-primary: 45 54% 58%;
+    --sidebar-primary-foreground: 0 0% 10%;
+    --sidebar-accent: 0 0% 15%;
+    --sidebar-accent-foreground: 45 54% 88%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 45 54% 58%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+}
+
+@layer components {
+  .gold-border {
+    @apply border border-gold relative after:absolute after:inset-0 after:border after:border-gold after:scale-105 after:opacity-50 after:pointer-events-none;
+  }
+
+  .gold-btn {
+    @apply bg-gold text-black font-medium px-6 py-2.5 rounded transition-all hover:bg-gold-dark;
+  }
+
+  .ghost-btn {
+    @apply border border-gold text-gold px-6 py-2.5 rounded transition-all hover:bg-gold/10;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-serif font-bold text-gold mb-6 relative inline-block;
+  }
+
+  .section-title::after {
+    @apply content-[''] absolute -bottom-2 left-0 w-1/2 h-0.5 bg-gold;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:translate-y-[-10px] hover:shadow-[0_10px_20px_rgba(212,175,55,0.15)];
+  }
+}
+
+.futuristic-card {
+  background: rgba(18, 18, 18, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.gold-text-gradient {
+  background: linear-gradient(to right, #D4AF37, #F8EFB7, #D4AF37);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-size: 200% auto;
+  animation: shine 4s linear infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
