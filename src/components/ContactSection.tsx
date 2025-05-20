@@ -10,9 +10,6 @@ const ContactSection = () => {
     message: "",
   });
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<null | "success" | "error">(null);
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
       ...formData,
@@ -20,27 +17,8 @@ const ContactSection = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitStatus("success");
-      setFormData({
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
-      });
-      
-      // Reset status after 3 seconds
-      setTimeout(() => {
-        setSubmitStatus(null);
-      }, 3000);
-    }, 1000);
-  };
+  // The handleSubmit, isSubmitting, and submitStatus logic will be removed
+  // as Formspree handles the submission and provides its own success/error pages.
 
   return (
     <section id="contact" className="py-20 relative">
@@ -134,7 +112,7 @@ const ContactSection = () => {
             <div className="futuristic-card p-8 rounded-lg border border-gold/20">
               <h3 className="text-2xl font-serif text-gold mb-6">Send Me a Message</h3>
               
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form action="https://formspree.io/f/xldjqpay" method="POST" className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-white mb-2">
@@ -209,33 +187,10 @@ const ContactSection = () => {
                 <div>
                   <button 
                     type="submit" 
-                    className="gold-btn w-full py-3 flex items-center justify-center"
-                    disabled={isSubmitting}
+                    className="gold-btn w-full py-3 transition-opacity duration-300"
                   >
-                    {isSubmitting ? (
-                      <span className="flex items-center">
-                        <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                        </svg>
-                        Sending...
-                      </span>
-                    ) : (
-                      "Send Message"
-                    )}
+                    Send Message
                   </button>
-                  
-                  {submitStatus === "success" && (
-                    <div className="mt-4 bg-emerald-900/50 border border-emerald-500/50 text-emerald-200 rounded-lg p-3">
-                      Your message has been sent successfully! I'll get back to you soon.
-                    </div>
-                  )}
-                  
-                  {submitStatus === "error" && (
-                    <div className="mt-4 bg-red-900/50 border border-red-500/50 text-red-200 rounded-lg p-3">
-                      There was an error sending your message. Please try again later.
-                    </div>
-                  )}
                 </div>
               </form>
             </div>
