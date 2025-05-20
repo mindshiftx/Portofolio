@@ -56,7 +56,7 @@ const HeroSection = () => {
             <div className="relative">
               <div className="absolute inset-0 border-2 border-gold rounded-lg -translate-x-3 -translate-y-3"></div>
               <img
-                src="/public/hamza.png"
+                src="/public/portrait_final_output (1).jpg"
                 alt="Hamza Mathlouthi"
                 onError={(e) => {
                   e.currentTarget.src = "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=500";
